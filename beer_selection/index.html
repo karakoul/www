@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" ng-app="beerChooser">
+<head>
+  <meta charset="utf-8">
+  <title>Beer Chooser</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  <!-- <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
+  <script src="lib/ui-bootstrap.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-controller="BeerListCtrl">
+  <h1 ng-if="isLoading" class="center-v">Loading...</h1>
+
+  <div ng-if="!isLoading">
+
+    <div id="past-beers">
+      <div id="hide-scroll">
+        <ul>
+          <li ng-repeat="past_beer in past_beers | reverse" class="thumbnail" tooltip-trigger tooltip-placement="left" tooltip="{{past_beer.name}}" tooltip-class="past-beer-tooltips">
+            <img ng-src="{{past_beer.image_thumb_url}}">
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn-default" ng-click="startOver()" ng-if="past_beers.length != 0">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div id="beerInfo" ng-if="toggle_pref.show && next_beers_cache.length > 0">
+      <p><b>Price:</b> {{next_beers_cache[0].price_in_cents/100 | currency}}</p>
+      <p><b>Alcohol:</b> {{next_beers_cache[0].alcohol_content / 100 }}%</p>
+      <p><b>Volume:</b> {{next_beers_cache[0].package_unit_volume_in_milliliters / 1000}}L x {{next_beers_cache[0].total_package_units}}</p>
+      <p><b>Type:</b> {{next_beers_cache[0].tertiary_category}}</p>
+      <p><b>Origin:</b> {{next_beers_cache[0].origin}}</p>
+      <p ng-if="next_beers_cache[0].serving_suggestion" id="serving-note" >
+        <b>Serving note:</b><br>{{next_beers_cache[0].serving_suggestion}}
+      </p>
+      <p ng-if="next_beers_cache[0].tasting_note">
+        <b>Tasting note:</b><br>{{next_beers_cache[0].tasting_note}}
+      </p>
+    </div>
+
+    <button id="toggle-info" type="button" class="btn btn-default" ng-click="toggleInfo()">
+      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    </button>
+
+    <div ng-if="next_beers_cache.length > 0">
+      <h1>How about this?</h1>
+      <img id="current-beer" ng-src="{{next_beers_cache[0].image_url}}"\>
+      <h1>{{next_beers_cache[0].name}}</h1>
+      <div id="buttons">
+        <button type="button" class="btn btn-default btn-lg" ng-click="showAnotherBeer()" ng-disabled="num_beers_to_try < 2">
+          <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Another?
+          <span class="badge">{{num_beers_to_try}}</span>
+        </button>
+        <button type="button" class="btn btn-default btn-lg" ng-click="acceptBeer()" ng-disabled="next_beers_cache.length <= 0">
+          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Looks good!
+        </button>
+      </div>
+    </div>
+
+    <div ng-if="next_beers_cache.length <= 0">
+      <h1 class="center-v">You've tried them all!</h1>
+    </div>
+  </div>
+</body>
+</html>

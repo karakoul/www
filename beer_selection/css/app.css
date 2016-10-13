@@ -1,0 +1,100 @@
+h1 {
+  text-align: center;
+}
+
+img#current-beer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 415px;
+}
+
+div#buttons {
+  text-align: center;
+}
+
+div#buttons button {
+  margin: 0 3px 3px 3px;
+  width: 200px;
+  height: 50px;
+}
+
+div#beerInfo {
+  position: absolute;
+  top: 10px;
+}
+
+div#beerInfo p {
+  max-width: 300px;
+  padding-left:10px;
+}
+
+p#serving-note {
+  min-height: 120px;
+}
+
+button#toggle-info {
+  position:absolute;
+  top: 553px;
+  left: 3px;
+  width: 52px;
+  height: 52px;
+  padding: 0px;
+  font-size: 1.8em;
+  border:0;
+}
+
+div#past-beers {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 608px;
+}
+
+div#hide-scroll {
+  height: 553px;
+  width: 58px;
+  overflow: hidden;
+}
+
+div#past-beers ul {
+  width: 73px;
+  height: 100%;
+  overflow: auto;
+  list-style-type: none;
+  padding: 0px 15px 0px 0px;
+  margin: 0px;
+}
+
+div#past-beers li {
+  padding: 0px;
+  margin: 3px;
+}
+
+div#past-beers img {
+  height: 50px;
+  width: 50px;
+  padding: 0px 6px;
+}
+
+.tooltip-inner {
+  white-space:pre;
+  max-width:none;
+}
+
+div#past-beers button {
+  position:absolute;
+  bottom:0;
+  right:0;
+  display: table-cell;
+  width: 52px;
+  height: 52px;
+  margin: 0px 3px 3px 3px;
+  padding: 0;
+  font-size: 1.8em;
+  border:0;
+}
+
+h1.center-v {
+  margin-top:285px;
+}
