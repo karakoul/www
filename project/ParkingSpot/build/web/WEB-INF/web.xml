@@ -9,7 +9,13 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/LoginPage</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>login_page.ActiveListener</listener-class>
+    </listener>
+
     <welcome-file-list>
         <welcome-file>login.html</welcome-file>
     </welcome-file-list>
+    
 </web-app>

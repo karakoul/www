@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="login_page.ActiveListener" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +15,6 @@
     </head>
     <body>
         <h1>First try!</h1>
+        <h2>Active Sessions = <%= ActiveListener.getTotalActiveSession() %>
     </body>
 </html>
