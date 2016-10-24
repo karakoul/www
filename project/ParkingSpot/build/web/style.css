@@ -19,10 +19,11 @@ button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin:0 auto;
+    text-align: center;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
 }
 
 /* Extra style for the cancel button (red) */
@@ -49,14 +50,9 @@ img.avatar {
     padding: 16px;
 }
 
-/* The "Forgot password" text */
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+/*@media screen and (max-width: 300px) {
     span.psw {
         display: block;
         float: none;
@@ -64,4 +60,4 @@ span.psw {
     .cancelbtn {
         width: 100%;
     }
-}
+}*/
