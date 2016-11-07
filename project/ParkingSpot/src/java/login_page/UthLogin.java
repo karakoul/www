@@ -17,9 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import javax.swing.JOptionPane;
 
-public class Login extends HttpServlet
+public class UthLogin extends HttpServlet
 {
 
     /**
@@ -46,8 +45,6 @@ public class Login extends HttpServlet
         else
         {
             RequestDispatcher view;
-            JOptionPane.showMessageDialog(null, "Login failed!\n Try again", "Error",
-                                    JOptionPane.ERROR_MESSAGE);
             view = req.getRequestDispatcher( "login.html" );
 
             view.forward( req, resp );
