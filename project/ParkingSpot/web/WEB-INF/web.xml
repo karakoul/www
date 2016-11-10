@@ -2,16 +2,14 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>LoginPage</servlet-name>
-        <servlet-class>login_page.LoginPage</servlet-class>
+        <servlet-class>LoginPage.jsp</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginPage</servlet-name>
-        <url-pattern>/LoginPage</url-pattern>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
-    <listener>
-        <listener-class>login_page.ActiveListener</listener-class>
-    </listener>
+
     <welcome-file-list>
-        <welcome-file>LoginPage.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

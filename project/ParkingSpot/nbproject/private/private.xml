@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/katerina/inf/www/project/ParkingSpot/web/style.css</file>
-            <file>file:/home/katerina/inf/www/project/ParkingSpot/web/login.html</file>
-            <file>file:/home/katerina/inf/www/project/ParkingSpot/</file>
-            <file>file:/home/katerina/inf/www/project/ParkingSpot/src/java/login_page/Login.java</file>
-            <file>file:/home/katerina/inf/www/project/ParkingSpot/web/index.jsp</file>
+            <file>file:/home/katerina/inf/www/project/ParkingSpot/web/WEB-INF/web.xml</file>
+            <file>file:/home/katerina/inf/www/project/ParkingSpot/src/java/database/DatabaseCreator.java</file>
+            <file>file:/home/katerina/inf/www/project/ParkingSpot/web/LoginPage.html</file>
+            <file>file:/home/katerina/inf/www/project/ParkingSpot/src/java/login_page/LoginPage.java</file>
+            <file>file:/home/katerina/inf/www/project/ParkingSpot/src/java/database/Database.java</file>
+            <file>file:/home/katerina/inf/www/project/ParkingSpot/web/UthLogin.html</file>
         </group>
     </open-files>
 </project-private>
