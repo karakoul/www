@@ -30,6 +30,7 @@ and open the template in the editor.
 <!--                <div class="image">
                     <img src="parking.jpeg" alt="Avatar" class="logo">
                 </div>-->
+                <h3>${sessionScope['error']}</h3>
                 <div class="form-group ">
                     <input type="text" class="form-control" placeholder="Username" name = "Username" required>
                     
@@ -40,7 +41,7 @@ and open the template in the editor.
                     <input type="password" class="form-control" placeholder="Password" name = "Password" required>
                     <i class="fa fa-lock"></i>
                 </div>
-                <a class="link" href="#">Lost your password?</a>
+                <a class="link" href="ForgotPassword.jsp">Lost your password?</a>
                 <button type="submit" class="log-btn" >Log in</button>
                 
                 

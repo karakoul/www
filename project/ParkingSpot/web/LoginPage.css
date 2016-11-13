@@ -64,6 +64,18 @@ h2 {
 }
 
 
+h3 {
+  color: #990000;
+}
+
+h4 {
+  color: #4d4d4d;
+  text-align: center;
+  font-family: 'Vibur', cursive;
+  font-size: 20px;
+}
+
+
 .form-group {
   position: relative;
   margin-bottom: 15px;

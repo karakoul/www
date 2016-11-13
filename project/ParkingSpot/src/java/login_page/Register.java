@@ -7,7 +7,8 @@ package login_page;
 
 import database.Database;
 import database.DatabaseCreator;
-import javax.swing.JOptionPane;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -25,9 +26,16 @@ public class Register {
     public Register() {
         db = DatabaseCreator.getInstance();
     }
+    
+    public boolean checkUsername(String Username) {
+        
+        return db.userExists(Username);
+        
+    }
 
     public void setUsername(String Username) {
         this.Username = Username;
+        
     }
 
     public void setPassword(String Password) {
@@ -76,15 +84,24 @@ public class Register {
     
     public boolean Registration() {
         if(!db.Registration(Username, Password, email, Name, Lastname, Phone)){
-            JOptionPane.showMessageDialog(null,"Username already in use!");
             return false;
         }
         return true;
     }
     
-    public void checkPassword(){
-        JOptionPane.showMessageDialog(null,"Wrong Password!");
+    public boolean isEmail(String email) {
+        
+        return email.contains("@");
     }
     
+    public boolean checkPassword(String Password){
+      String pattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}";
+      // Create a Pattern object
+      Pattern r = Pattern.compile(pattern);
+
+      // Now create matcher object.
+      Matcher m = r.matcher(Password);
+      return m.find( );
+    }
 
 }

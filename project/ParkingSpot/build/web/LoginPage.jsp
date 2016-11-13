@@ -11,6 +11,8 @@
        response.sendRedirect("MainPage.jsp");
     }
     else{
+        session = request.getSession(false);
+        session.setAttribute("error", "Your account or password is incorrect.");
         response.sendRedirect("index.jsp");
     }
 %>

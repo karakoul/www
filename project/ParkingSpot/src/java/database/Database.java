@@ -118,11 +118,9 @@ public final class Database {
 		// Returns true if username & password are correct , otherwise it returns false
         try {
             rs = stmt.executeQuery("SELECT * FROM user WHERE Username='" + Username + "'" + " AND Password='" + Password + "'");
-            if(!rs.isBeforeFirst()) {
-                return false;
-            } else {
-                return true;
-            }
+            
+            return rs.isBeforeFirst();
+            
         } catch(SQLException ex) {
             return false;
         }
@@ -165,6 +163,37 @@ public final class Database {
         } catch(SQLException se) {
             return false;
         }
+    }
+    
+    public boolean userExists(String Username){
+
+        try{
+            pstmt = conn.prepareStatement("SELECT `Username` FROM `user` WHERE Username = ?");
+            pstmt.setString(1,Username);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch(SQLException se) {
+            return true;
+        }
+        return false;
+    }
+    
+    public String getUserEmail(String Username) {
+		
+        try {
+            pstmt = conn.prepareStatement("SELECT Email FROM user WHERE Username = ?");
+            pstmt.setString(1,Username);
+            rs = pstmt.executeQuery();
+            while(rs.next()) {
+                return rs.getString("Email");
+            }
+        } catch(SQLException se) {
+            se.printStackTrace();
+            return "";
+        }
+        return "";
     }
     
     public boolean newCar(String Username, String CarModel, String CarSize, String CarColour, String CarLicencePlate) {
