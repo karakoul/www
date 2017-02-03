@@ -10,45 +10,50 @@ package login_page;
  * @author katerina
  */
 import com.uthldap.Uthldap;
+import database.Database;
+import database.DatabaseCreator;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-public class UthLogin extends HttpServlet
+public class UthLogin
 {
+    private static Database db;
+    String Username;
+    String Password;
 
-    /**
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
-    @Override
-    protected void doPost( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException
-    {
-        String uid = req.getParameter( "uname" );
-        String passwd = req.getParameter( "psw" );
-
-        Uthldap uthldap = new Uthldap( uid, passwd );
-
-        if ( uthldap.auth() )
-        {
-            RequestDispatcher view = req.getRequestDispatcher( "index.jsp" );
-
-            view.forward( req, resp );
-        }
-        else
-        {
-            RequestDispatcher view;
-            view = req.getRequestDispatcher( "login.html" );
-
-            view.forward( req, resp );
-        }
+    
+    public UthLogin() {
+        db = DatabaseCreator.getInstance();
     }
+
+    public int setUser(String Username, String Password )
+    {
+        Uthldap uthldap = new Uthldap( Username, Password );
+        String currUsername = Username;
+        if (! uthldap.auth() )
+        {
+            return -1;
+        }
+        if(!db.emailExists(Username+"@uth.gr")){
+            while(db.userExists(currUsername)){
+                currUsername += "1";
+            }
+            if(!db.Registration(currUsername, null, Username + "@uth.gr", null, null, null)){
+                this.Username = currUsername;
+                return -2;
+            } 
+        }
+        else {
+            this.Username = db.getUsername(Username+"@uth.gr");
+        }
+        
+        return 0;
+        
+    }
+    public String getUsername(){
+        
+        return Username;
+    }
+    
+    
+    
 }
 

@@ -1,0 +1,52 @@
+
+
+body {
+    background-image: url("./images/city.jpg");
+}
+
+.sub {
+    width: 350px;
+    height: 250px;
+    padding: 40px 30px;
+    background: whitesmoke;
+    opacity: 0.6;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 7%;
+    top: 20%;
+    bottom: 0;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+h1 {
+    font-size: 28px;
+    font-family: 'Vibur', cursive;
+    color: #4d4d4d;
+    position: absolute;
+    opacity: no;
+    
+}
+.form-group{
+    position: fixed;
+    top: 57%;
+}
+.find-btn{
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    
+}
+.cancel-btn{
+    font-size: 20px;
+    background: transparent;
+    border: none;
+}
+

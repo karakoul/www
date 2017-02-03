@@ -11,12 +11,9 @@
     LoginPage user = new LoginPage(); 
     
     user.setUserName(Username);
-    if(user.getEmail() == ""){
-       response.sendRedirect("ForgotPassword.jsp");
-    }
-    else{
-        session = request.getSession(false);
-        session.setAttribute("error", "Your account or password is incorrect.");
-        response.sendRedirect("index.jsp");
-    }
+    
+    user.getEmail();
+    user.sendEmail(user.getEmail());
+    response.sendRedirect("ForgotPassword.jsp");
+
 %>

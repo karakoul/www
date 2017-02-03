@@ -44,8 +44,9 @@
         user.setName(Name);
         user.setPhone(Phone);
         if(user.Registration()){
-            response.sendRedirect("MainPage.jsp");
-        } else{
+            response.sendRedirect("MainPage.jsp?Username="+Username);
+        } 
+        else{
             session = request.getSession(false);
             session.setAttribute("error", "An error occured. Please try again.");
             response.sendRedirect("Reg.jsp");

@@ -9,13 +9,9 @@ package login_page;
 import database.Database;
 import database.DatabaseCreator;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Date;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -45,6 +41,10 @@ public class LoginPage{
         this.Password = Password;
         
     }
+    public void changePassword(String Username,String Password){
+        
+        db.forgotPassword(Username, Password);
+    }
     
     public String getUserName()
     {
@@ -68,46 +68,64 @@ public class LoginPage{
         return db.getUserEmail(Username);
     }
     
-    public void sendEmail(String Yo){
-        try{
+    public void sendEmail(String Email) throws AddressException, MessagingException{
+        Properties mailServerProperties;
+	Session getMailSession;
+	MimeMessage generateMailMessage;
+        //setup Mail Server Properties
+        mailServerProperties = System.getProperties();
+        mailServerProperties.put("mail.smtp.port", "587");
+        mailServerProperties.put("mail.smtp.auth", "true");
+        mailServerProperties.put("mail.smtp.starttls.enable", "true");
+        System.out.println("Mail Server Properties have been setup successfully..");
 
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail..com"); // for gmail use smtp.gmail.com
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.debug", "true"); 
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.port", "465");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.socketFactory.fallback", "false");
+        //get Mail Session
+        getMailSession = Session.getDefaultInstance(mailServerProperties, null);
+        generateMailMessage = new MimeMessage(getMailSession);
+        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(Email));
+        generateMailMessage.setSubject("Parking Spot password reminder");
+        String emailBody = "<i> Hi " + getUserName() + "</i><br>";
+        emailBody += "<b>If you want to reset your password press the link above</b><br>";
+        emailBody += "<font color=blue > <a href=\"http://83.212.99.202:8080/ParkingSpot/PasswordReminder.jsp?Username=" + Username +"\">ParkingSpot email reset</a> </font>";
+        generateMailMessage.setContent(emailBody, "text/html");
 
-        Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
+        //Get Session and Send mail
+        Transport transport = getMailSession.getTransport("smtp");
 
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("kat.karakoula@gmail.com", "****");
-            }
-        });
-
-        mailSession.setDebug(true); // Enable the debug mode
-
-        Message msg = new MimeMessage( mailSession );
-
-        //--[ Set the FROM, TO, DATE and SUBJECT fields
-        msg.setFrom( new InternetAddress( "kat.karakoula@gmail.com" ) );
-        msg.setRecipients( Message.RecipientType.TO,InternetAddress.parse("katcool5@hotmail.com") );
-        msg.setSentDate( new Date());
-        msg.setSubject( "Hello World!" );
-
-        //--[ Create the body of the mail
-        msg.setText( "Hello from my first e-mail sent with JavaMail" );
-
-        //--[ Ask the Transport class to send our mail message
-        Transport.send( msg );
-
-    }catch(Exception E){
-        System.out.println( "Oops something has gone pearshaped!");
-        System.out.println( E );
+        // Enter your correct gmail UserID and Password
+        // if you have 2FA enabled then provide App Specific Password
+        transport.connect("smtp.gmail.com", "kat.karakoula@gmail.com", "****");
+        transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
+        transport.close();
     }
+    
+    public void sendFixedEmail(String Email, String emailBody, String Subject) throws AddressException, MessagingException{
+        Properties mailServerProperties;
+	Session getMailSession;
+	MimeMessage generateMailMessage;
+        //setup Mail Server Properties
+        mailServerProperties = System.getProperties();
+        mailServerProperties.put("mail.smtp.port", "587");
+        mailServerProperties.put("mail.smtp.auth", "true");
+        mailServerProperties.put("mail.smtp.starttls.enable", "true");
+        System.out.println("Mail Server Properties have been setup successfully..");
+
+        //get Mail Session
+        getMailSession = Session.getDefaultInstance(mailServerProperties, null);
+        generateMailMessage = new MimeMessage(getMailSession);
+        System.out.println("EMAIL = "+ Email);
+        generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(Email));
+        generateMailMessage.setSubject(Subject);
+        generateMailMessage.setContent(emailBody, "text/html");
+
+        //Get Session and Send mail
+        Transport transport = getMailSession.getTransport("smtp");
+
+        // Enter your correct gmail UserID and Password
+        // if you have 2FA enabled then provide App Specific Password
+        transport.connect("smtp.gmail.com", "kat.karakoula@gmail.com", "****");
+        transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
+        transport.close();
     }
     
 

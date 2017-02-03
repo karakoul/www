@@ -35,6 +35,7 @@ and open the template in the editor.
                 </div>-->
 
                 <h3>${sessionScope['error']}</h3>
+                <%session.removeAttribute("error");%>
                 <div class="form-group ">
                     <input type="text" class="form-control" placeholder="Username" name = "Username" required>
                     <i class="fa fa-user"></i>
