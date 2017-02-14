@@ -26,7 +26,7 @@ and open the template in the editor.
     <body>
         
         <h1> Parking Spot</h1>
-        <form method="post" action="Registration.jsp" onsubmit="return check();">
+        <form method="post" action="signup" onsubmit="return check();">
             <div class="register">
                 
                 <h2>Sign up</h2>

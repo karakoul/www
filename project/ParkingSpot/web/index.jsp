@@ -25,10 +25,10 @@ and open the template in the editor.
     <body>
 
         <h1> Parking Spot</h1>
-        <form method="post" action="LoginPage.jsp">
+        <form method="post" action="login">
             <div class="login">
 
-                <h2>Login or <a class="linkRegister" <a href="Reg.jsp">Sign up</a></h2>
+                <h2>Login or <a class="linkRegister" <a href="signup">Sign up</a></h2>
 
                 <h3>${sessionScope['error']}</h3>
                 <%session.removeAttribute("error");%>
@@ -43,13 +43,13 @@ and open the template in the editor.
                     <input type="password" class="form-control" placeholder="Password" name = "Password" required>
                     <i class="fa fa-lock"></i>
                 </div>
-                <a class="link" href="ForgotPassword.jsp">Lost your password?</a>
+                <a class="link" href="forgotpassword">Lost your password?</a>
                 <button type="submit" class="log-btn" >Log in</button>
 
 
 
                 <div>
-                    <a href="UthLogin.jsp" class="btnUth"> 
+                    <a href="uth" class="btnUth"> 
                         <img src="./images/uth_logo.jpg" width = "40"/>
                     </a>
                 </div>	

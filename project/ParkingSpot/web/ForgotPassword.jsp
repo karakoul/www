@@ -15,7 +15,7 @@
     <body>
         
         <h1> Parking Spot</h1>
-        <form method="post" action="ForgotPass.jsp">
+        <form method="post" action="forgotpassword">
             <div class="login">
                 
                 <h2>Recover your account</h2>

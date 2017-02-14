@@ -23,7 +23,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1> Parking Spot</h1>
-        <form method="post" action="UthLoginPage.jsp">
+        <form method="post" action="uth">
             <div class="login">
                 
                 <h2>Login with your uth account</h2>

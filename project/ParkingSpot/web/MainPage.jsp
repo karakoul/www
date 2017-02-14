@@ -18,7 +18,7 @@
             <div class="search">
                 <div class="form-group ">
                     <input id="autocomplete" type="text" onFocus="geolocate()" name="place" class="form-control" placeholder="                 Αναζητηση στους χαρτες Google" >
-                    <input type="hidden" name="Username" value=<%=request.getParameter("Username")%>>
+                    <input type="hidden" name="Username" value=<%=session.getAttribute("Username")%>>
                     <input type="hidden" name="payName" value=<%=request.getParameter("payName")%>>
                     
                     <i class="fa fa-user"></i>
@@ -30,7 +30,7 @@
                 <!--<a type="submit" class="find-btn" href="index.jsp">Find Spot</a>-->
             </div>
             <div class="sign-btn">
-                <a type="submit" class="log-btn" href="index.jsp">Log in/Sing up</a>
+                <a class="log-btn" href="login">Log in/Sing up</a>
             </div> 
 <!--            <div class="about-btn">
                 <a type="submit" class="ab-btn" href="index.jsp">About</a>
